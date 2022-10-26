@@ -1,0 +1,107 @@
+.submenu {
+  transition: transform 0.2s ease-out, opacity 0s ease-out, -webkit-transform 0.2s ease-out;
+  transform: translateY(100%);
+  opacity: 1;
+  position: absolute;
+  background: #fff;
+  border-radius: 0 0 160px 0;
+  color: #1eb7ee;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
+}
+
+.container-info {
+  padding: 20px 0;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  display: flex;
+
+  &__banner {
+    display: flex;
+    flex: 0 0 50%;
+    max-width: 50%;
+    justify-content: center !important;
+    height: 100%;
+    &-place {
+      background: #fff;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      padding-left: 10px;
+      max-width: 50%;
+    }
+    &-img {
+      border-radius: 0 0 0 70px;
+      border-style: none;
+      max-width: 100%;
+    }
+    &-content {
+      padding: 15px;
+      color: #2f2f2f;
+      &-title {
+        font-size: 24px;
+        line-height: 28px !important;
+        margin-bottom: 10px;
+        font-weight: 700 !important;
+        display: block;
+      }
+      &-description {
+        font-size: 18px;
+      }
+      &-btn {
+        cursor: pointer;
+        color: #1eb7ee;
+        border: 2px solid #1eb7ee;
+        border-radius: 20px;
+        height: 40px;
+        line-height: 36px;
+        font-weight: 700;
+        margin-left: 15px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        transition: 0.2s ease-out;
+        font-size: 1rem;
+        user-select: none;
+        background-color: transparent;
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+  }
+  &__all {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.menu-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  margin-right: 25px;
+  &__list {
+    list-style: none;
+    padding: 0;
+
+    &-item {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 0;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 1rem;
+      &-line {
+        &:hover {
+          cursor: pointer;
+          border-bottom: 1px solid #1eb7ee;
+        }
+      }
+    }
+  }
+}
