@@ -3,13 +3,14 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Header from './header/Header';
 import Footer from './footer/Footer';
+import MainContent from './mainComtent/MainContent';
 
 const App = () => {
   return (
     <Provider store={store}>
       <div className="main-container">
         <Header />
-        {/* <MainContent />*/}
+        <MainContent />
         <Footer />
       </div>
     </Provider>
