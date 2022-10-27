@@ -1,25 +1,33 @@
+@keyframes move {
+  0% {
+    top: -400px;
+  }
+  100% {
+    top: 92px;
+  }
+}
+
 .submenu {
-  transition: transform 0.2s ease-out, opacity 0s ease-out, -webkit-transform 0.2s ease-out;
-  transform: translateY(100%);
-  opacity: 1;
   position: absolute;
   background: #fff;
-  border-radius: 0 0 160px 0;
   color: #1eb7ee;
   width: 100%;
   left: 0;
   bottom: 0;
   z-index: 9;
-  box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
+  animation: move 1s;
+  animation-fill-mode: forwards;
 }
 
 .container-info {
+  background-color: #fff;
   padding: 20px 0;
-  max-width: 1140px;
+  max-width: 95%;
   margin-right: auto;
-  margin-left: auto;
   width: 100%;
   display: flex;
+  border-radius: 0 0 160px 0;
+  box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
 
   &__banner {
     display: flex;

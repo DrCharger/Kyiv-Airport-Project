@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { navList } from './navigation/navList';
+import { navList } from '../data/navList';
 import './header.scss';
 import Info from './navigation/Info';
-import { submenu } from './navigation/submenu';
+import { submenu } from '../data/submenu';
 import classNames from 'classnames';
 
 const Header = () => {
   const [isOpen, setOpened] = useState(false);
   const [stateId, setId] = useState('');
-  const [bannerData, setBanner] = useState({ id: '00' });
+  const [bannerData, setBanner] = useState();
 
   const onOpen = navId => {
     if (stateId === navId) {
