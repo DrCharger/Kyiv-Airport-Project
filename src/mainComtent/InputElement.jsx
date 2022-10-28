@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 
 const InputElement = () => {
+  const [inputElem, setElement] = useState('');
   return (
     <div className="input-content">
       <div className="input-content-justify">
@@ -13,6 +15,8 @@ const InputElement = () => {
                 className="input-content__action-fly"
                 type="text"
                 placeholder="Номер рейсу або місто"
+                value={inputElem}
+                onChange={event => setElement(event.target.value)}
               />
               <button className="input-content__action-btn">ЗНАЙТИ</button>
             </form>
