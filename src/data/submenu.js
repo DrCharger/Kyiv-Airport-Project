@@ -1,11 +1,12 @@
 export const submenu = [
   {
-    id: '01',
+    id: '07',
     img_url: 'https://iev.aero/images/main/32.jpg',
     title: 'Авіаквитки',
     description: 'Ви маєте можливість купити квитки онлайн',
     about: [
       {
+        id: '13',
         title: 'Інформація',
         list: [
           'COVID-19',
@@ -20,6 +21,7 @@ export const submenu = [
         ],
       },
       {
+        id: '14',
         title: 'Загальне',
         list: [
           'Онлайн-розклад',
@@ -36,12 +38,13 @@ export const submenu = [
     ],
   },
   {
-    id: '02',
+    id: '08',
     img_url: 'https://iev.aero/images/main/45.jpg',
     title: 'Готелі світу',
     description: 'Бронюйте готелі по всьому світу за найкращими цінами',
     about: [
       {
+        id: '15',
         title: 'Усі послуги',
         list: [
           'Тестування на COVID-19',
@@ -56,34 +59,38 @@ export const submenu = [
         ],
       },
       {
+        id: '16',
         title: '',
         list: ['Придбати авіаквитки', 'Готелі світу', 'Прокат автомобілів'],
       },
     ],
   },
   {
-    id: '03',
+    id: '09',
     img_url: 'https://iev.aero/images/main/43.jpg',
     title: 'Термінал B',
     description: 'Швидкість, комфорт, конфіденційність.',
     about: [
       {
+        id: '17',
         title: '',
         list: ['Термінал B', 'VIP-обслуговування', 'Трансфер', 'Готель IEV', 'Приватний рейс'],
       },
       {
+        id: '18',
         title: '',
         list: ['Тарифи та правила', 'Артгалерея', 'Віртуальний тур', 'Контактна інформація'],
       },
     ],
   },
   {
-    id: '04',
+    id: '10',
     img_url: 'https://iev.aero/images/main/32.jpg',
     title: 'Авіаквитки',
     description: 'Ви маєте можливість купити квитки онлайн',
     about: [
       {
+        id: '19',
         title: 'Партнерам',
         list: [
           'Головна "Партнерам"',
@@ -99,12 +106,13 @@ export const submenu = [
     ],
   },
   {
-    id: '05',
+    id: '11',
     img_url: 'https://iev.aero/images/main/32.jpg',
     title: 'Авіаквитки',
     description: 'Ви маєте можливість купити квитки онлайн',
     about: [
       {
+        id: '20',
         title: 'Пресцентр',
         list: [
           'Головна пресцентру',

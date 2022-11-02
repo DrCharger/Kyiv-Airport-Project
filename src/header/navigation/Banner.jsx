@@ -1,8 +1,8 @@
 import React from 'react';
 import './info.scss';
-import InfoList from './InfoList';
+import BannerItems from './BannerItems';
 
-const Info = ({ bannerInfo }) => {
+const Banner = ({ bannerInfo }) => {
   return (
     <div className="submenu">
       <div className="container-info">
@@ -18,10 +18,10 @@ const Info = ({ bannerInfo }) => {
         </div>
         <div className="container-info__all">
           {bannerInfo.about.map(elem => (
-            <div className="menu-title">
+            <div className="menu-title" key={elem.id}>
               <div>{elem.title}</div>
 
-              <InfoList about={elem.list} />
+              <BannerItems about={elem.list} />
             </div>
           ))}
         </div>
@@ -30,4 +30,4 @@ const Info = ({ bannerInfo }) => {
   );
 };
 
-export default Info;
+export default Banner;

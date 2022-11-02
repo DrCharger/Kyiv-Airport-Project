@@ -1,13 +1,13 @@
 import React from 'react';
 import './footer.scss';
 import FooterInfo from './FooterInfo';
-import FooterLast from './FooterLast';
+import FooterAuthor from './FooterAuthor';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <FooterInfo />
-      <FooterLast />
+      <FooterAuthor />
     </footer>
   );
 };

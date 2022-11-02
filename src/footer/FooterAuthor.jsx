@@ -1,7 +1,7 @@
 import React from 'react';
-import './footerlast.scss';
+import './footerAuthor.scss';
 
-const FooterLast = () => {
+const FooterAuthor = () => {
   return (
     <div className="last-conteiner">
       <div className="last-conteiner-info">
@@ -23,7 +23,7 @@ const FooterLast = () => {
               />
             </a>
           </div>
-          <div className="thank-to-autor">
+          <div>
             <span>
               Розробка сайту
               <br />
@@ -36,4 +36,4 @@ const FooterLast = () => {
   );
 };
 
-export default FooterLast;
+export default FooterAuthor;

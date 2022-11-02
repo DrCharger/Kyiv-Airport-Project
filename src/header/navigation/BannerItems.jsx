@@ -1,10 +1,10 @@
 import React from 'react';
 
-const InfoList = ({ about }) => {
+const BannerItems = ({ about }) => {
   return (
     <ul className="menu-title__list">
       {about.map(num => (
-        <li className="menu-title__list-item">
+        <li className="menu-title__list-item" key={`list-${num}`}>
           <span className="menu-title__list-item-line">{num}</span>
         </li>
       ))}
@@ -12,4 +12,4 @@ const InfoList = ({ about }) => {
   );
 };
 
-export default InfoList;
+export default BannerItems;

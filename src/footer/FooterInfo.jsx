@@ -6,13 +6,11 @@ const FooterInfo = () => {
   return (
     <div className="footer-container">
       {footerData.map(info => (
-        <div className="footer-container__info">
-          <h3 key={info.id} className="footer-container__info-header">
-            {info.name}
-          </h3>
+        <div key={info.id} className="footer-container__info">
+          <h3 className="footer-container__info-header">{info.name}</h3>
           <ul className="footer-container__info-header__list">
             {info.about.map(li => (
-              <li className="footer-container__info-header__list-item">
+              <li key={`about-${li}`} className="footer-container__info-header__list-item">
                 <span className="footer-container__info-header__list-item__text">{li}</span>
               </li>
             ))}
@@ -29,7 +27,7 @@ const FooterInfo = () => {
             <span className="contacts__network-title">Приєднуйтесь до нас</span>
             <ul className="contacts__network__list">
               {netWorks.map(el => (
-                <li className="contacts__network__list-item">
+                <li key={`netw-${el.id}`} className="contacts__network__list-item">
                   <a target={'_blank'} href={el.url}>
                     <img srcSet={el.img_url} alt={el.name} className="img" />
                   </a>

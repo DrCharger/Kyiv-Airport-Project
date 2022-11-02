@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 import { navList } from '../data/navList';
 import './header.scss';
-import Info from './navigation/Info';
+import Banner from './navigation/Banner';
 import { submenu } from '../data/submenu';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [isOpen, setOpened] = useState(false);
+  const [isOpened, setOpened] = useState(false);
   const [stateId, setId] = useState('');
-  const [bannerData, setBanner] = useState();
+  const [bannerData, setBannerData] = useState();
 
   const onOpen = navId => {
+    if (navId === '06') {
+      return alert('Не можливо змінити мову');
+    }
     if (stateId === navId) {
       setId('');
       return setOpened(false);
     }
     setId(navId);
-    const newData = submenu.find(el => el.id === navId);
-    setBanner(newData);
+    const newBannerData = submenu.find(el => Number(el.id) - 6 === Number(navId));
+    setBannerData(newBannerData);
     setOpened(true);
   };
   return (
     <header className="header">
       <div className="container">
         <div className="logo">
-          <img
-            className="logo_img"
-            srcSet="https://iev.aero/_nuxt/img/logo@2x.2d2c20b.png"
-            alt="Logo"
-          />
+          <Link to="/">
+            <img
+              className="logo_img"
+              srcSet="https://iev.aero/_nuxt/img/logo@2x.2d2c20b.png"
+              alt="Logo"
+            />
+          </Link>
         </div>
         <div className="navbar">
           <ul className="navbar_nav">
@@ -44,7 +50,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      {isOpen && <Info bannerInfo={bannerData} />}
+      {isOpened && <Banner bannerInfo={bannerData} />}
     </header>
   );
 };

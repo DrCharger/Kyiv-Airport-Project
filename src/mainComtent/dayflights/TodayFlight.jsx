@@ -1,9 +1,12 @@
 import React from 'react';
 import moment from 'moment/moment';
+import { useSearchParams } from 'react-router-dom';
 
 const formatTime = time => moment(new Date(time)).format('HH:mm');
 
 const TodayFlight = ({ flightInfo, flightId }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const { term, timeTakeofFact, timeDepShedule, airline, fltNo, timeLandFact, timeToStand } =
     flightInfo;
   let flightNum;
@@ -23,6 +26,16 @@ const TodayFlight = ({ flightInfo, flightId }) => {
     time = formatTime(timeToStand);
     city = flightInfo['airportFromID.name'];
     status = `Прибув о ${formatTime(timeLandFact)}`;
+  }
+  let flightToFind = true;
+  if (searchParams.has('search')) {
+    flightToFind =
+      flightNum.includes(searchParams.get('search')) || city.includes(searchParams.get('search'))
+        ? true
+        : false;
+  }
+  if (!flightToFind) {
+    return null;
   }
 
   return (

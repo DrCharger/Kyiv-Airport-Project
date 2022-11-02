@@ -1,16 +1,22 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Link, Routes, useSearchParams } from 'react-router-dom';
 import './arrivalDeparture.scss';
-import TabContent from './TabConteny';
+import TabContent, { today } from './TabConteny';
 import ThisDayFlight from '../dayflights/ThisDayFlight';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { getFlightList } from '../../flights/flights.actions';
 
-const ArrivalDeparture = ({ fetcher, list, dayToFind }) => {
+const ArrivalDeparture = ({ fetcher, list }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [colorToggle, setColor] = useState(true);
-  useEffect(() => fetcher(dayToFind), [dayToFind]);
+  let dayToFind = searchParams.get('date');
+  if (searchParams.get('date') === null) {
+    dayToFind = today(new Date());
+  }
+  const whatToSearch = searchParams.get('search');
+  useEffect(() => fetcher(dayToFind), [searchParams]);
 
   return (
     <div className="search-result">
@@ -18,7 +24,13 @@ const ArrivalDeparture = ({ fetcher, list, dayToFind }) => {
         <div className="tablist">
           <div className="tablist-container">
             <button className={classNames('tablist-container-btn', { press: colorToggle })}>
-              <Link to="/departure">
+              <Link
+                to={
+                  searchParams.has('search')
+                    ? `/departure?date=${dayToFind}&&search=${whatToSearch}`
+                    : `/departure?date=${dayToFind}`
+                }
+              >
                 <span
                   className={classNames('tablist-container-btn-text', { press: colorToggle })}
                   onClick={() => setColor(true)}
@@ -28,7 +40,13 @@ const ArrivalDeparture = ({ fetcher, list, dayToFind }) => {
               </Link>
             </button>
             <button className={classNames('tablist-container-btn2', { press: !colorToggle })}>
-              <Link to="/arrival">
+              <Link
+                to={
+                  searchParams.has('search')
+                    ? `/arrival?date=${dayToFind}&&search=${whatToSearch}`
+                    : `/arrival?date=${dayToFind}`
+                }
+              >
                 {' '}
                 <span
                   className={classNames('tablist-container-btn-text', { press: !colorToggle })}
@@ -39,18 +57,17 @@ const ArrivalDeparture = ({ fetcher, list, dayToFind }) => {
               </Link>
             </button>
           </div>
-        </div>{' '}
+        </div>
         <TabContent />
       </div>
 
-      <Switch>
-        <Route path="/:flightId">
-          <ThisDayFlight allFlightList={list.body} day={dayToFind} />
-        </Route>
-        <Route path="/">
-          <span>No Flights</span>
-        </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path={`/:flightId`}
+          element={<ThisDayFlight allFlightList={list.body} day={dayToFind} />}
+        />
+        <Route path="/" element={<span>No Flights</span>} />
+      </Routes>
     </div>
   );
 };
@@ -58,7 +75,6 @@ const ArrivalDeparture = ({ fetcher, list, dayToFind }) => {
 const mapState = state => {
   return {
     list: state.flights.flightList,
-    dayToFind: state.flights.dayIs,
   };
 };
 

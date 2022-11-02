@@ -2,7 +2,7 @@ import { fetchFlightsList } from './flights.gateWays';
 
 export const FLIGHTS_LIST_RECIEVED = 'FLIGHTS_LIST_RECIEVED';
 export const SHOW_SPINNER = 'SHOW_SPINNER';
-export const FIND_A_DAY = 'FIND_A_DAY';
+export const FIND_A_DATE = 'FIND_A_DATE';
 
 export const showSpinner = () => {
   return {
@@ -19,11 +19,11 @@ export const flightsListRecieved = flightList => {
   };
 };
 
-export const findWhatDay = day => {
+export const findDate = date => {
   return {
-    type: FIND_A_DAY,
+    type: FIND_A_DATE,
     payload: {
-      day,
+      date,
     },
   };
 };

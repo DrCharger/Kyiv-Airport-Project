@@ -1,9 +1,9 @@
-import { FIND_A_DAY, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER } from './flights.actions';
+import { FIND_A_DATE, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER } from './flights.actions';
 
 const initialState = {
   flightList: [],
   isFetching: false,
-  dayIs: '11-01-2022',
+  date: '',
 };
 
 const flightsReducer = (state = initialState, action) => {
@@ -13,10 +13,10 @@ const flightsReducer = (state = initialState, action) => {
         ...state,
         isFetching: true,
       };
-    case FIND_A_DAY:
+    case FIND_A_DATE:
       return {
         ...state,
-        dayIs: action.payload.day,
+        date: action.payload.date,
       };
     case FLIGHTS_LIST_RECIEVED:
       return {

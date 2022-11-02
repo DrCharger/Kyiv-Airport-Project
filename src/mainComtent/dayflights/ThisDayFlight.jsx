@@ -1,15 +1,18 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import './thisDayFlight.scss';
 import TodayFlight from './TodayFlight';
 
-const ThisDayFlight = ({ allFlightList, day }) => {
+const ThisDayFlight = ({ allFlightList }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { flightId } = useParams();
+  const day = searchParams.get('date');
+
   let whatToDo;
   if (flightId === 'departure' && allFlightList !== undefined) {
-    whatToDo = allFlightList.departure.filter(
-      el => new Date(el.timeDepShedule).getDate() === Number(day.split('-')[0]),
-    );
+    whatToDo = allFlightList.departure
+      .filter(el => new Date(el.timeDepShedule).getDate() === Number(day.split('-')[0]))
+      .sort((a, b) => new Date(a.timeDepShedule).getTime() - new Date(b.timeDepShedule).getTime());
   } else if (flightId === 'arrival' && allFlightList !== undefined) {
     whatToDo = allFlightList.arrival
       .filter(el => new Date(el.timeLandFact).getDate() === Number(day.split('-')[0]))
