@@ -50,7 +50,7 @@ const TodayFlight = ({ flightInfo, flightId }) => {
         <div className="table-flight__body-compName__container ">
           <img src={airline.ua.logoName} alt="logo" className="logo-img" />
         </div>
-        <p>{airline.ua.name}</p>
+        <p className="logo-p">{airline.ua.name}</p>
       </td>
       <td className="table-flight__body-flight">{flightNum}</td>
       <td className="table-flight__body-details"></td>

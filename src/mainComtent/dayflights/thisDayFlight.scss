@@ -11,8 +11,6 @@
     border-collapse: collapse;
     &__header {
       color: #95989a;
-      font-size: 16px;
-      font-weight: 600;
     }
     &__body {
       &-tr {
@@ -21,13 +19,8 @@
         }
       }
       &-terminal {
-        display: table-cell;
         text-align: center;
-        font-size: 18px;
-        line-height: 40px;
         padding: 16px 10px;
-        border: 0;
-        vertical-align: top;
         &__text {
           color: #63c745;
           font-weight: 700;
@@ -36,7 +29,6 @@
           display: inline-block;
           width: 40px;
           height: 40px;
-          text-align: center;
           line-height: 35px;
           font-size: 22px;
         }
@@ -44,9 +36,10 @@
       &-compName {
         display: flex;
         align-items: center;
+        line-height: 100%;
         &__container {
           height: 40px;
-          text-align: center;
+          margin-top: 10px;
           margin-right: 5px;
         }
       }
@@ -57,12 +50,18 @@
   }
 }
 
-.logo-img {
-  max-width: 100%;
-  max-height: 95%;
-  top: 5%;
-  position: relative;
-  display: inline-block;
+.logo {
+  &-img {
+    max-width: 100%;
+    max-height: 95%;
+    top: 5%;
+    position: relative;
+    display: inline-block;
+  }
+  &-p {
+    margin: 0;
+    margin-top: 15px;
+  }
 }
 
 td {
