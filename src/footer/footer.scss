@@ -109,6 +109,9 @@
       padding-right: 30%;
       @include medium {
         padding: 0 40px;
+        max-width: 40%;
+        margin: auto;
+        margin-top: 20px;
       }
     }
   }

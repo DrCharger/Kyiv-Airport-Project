@@ -1,15 +1,23 @@
+@import '../index.scss';
+
 .last-conteiner {
   padding-left: 100px;
   padding-right: 100px;
   margin-right: auto;
   margin-left: auto;
-  // max-width: 1140px;
+  @include medium {
+    margin: 0;
+    padding: 0;
+  }
   &-info {
     padding-top: 20px;
     margin-top: 30px;
     color: #b8bdc1;
     border-top: 1px solid #b8bdc1;
     display: flex;
+    @include medium {
+      padding-bottom: 15px;
+    }
   }
 }
 
@@ -18,24 +26,41 @@
   line-height: 18px;
   padding-right: 40px;
   padding-left: 40px;
+  @include medium {
+    font-size: 10px;
+    line-height: 10px;
+    padding: 0;
+    padding-left: 10px;
+  }
 }
 
 .ufuture {
-  padding-right: 10px;
+  padding-right: 20px;
   padding-left: 10px;
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
+  @include medium {
+    font-size: 10px;
+    line-height: 10px;
+  }
   &-link {
     display: flex;
     align-items: center;
     line-height: 18px;
     color: #b8bdc1;
     cursor: pointer;
+    @include medium {
+      line-height: 10px;
+    }
 
     &__img {
       margin-left: 25px;
       width: 35px;
+      @include medium {
+        width: 15px;
+        margin-left: 10px;
+      }
     }
   }
 }
