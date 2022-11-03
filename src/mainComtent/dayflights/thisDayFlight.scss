@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .table {
   padding-top: 35px;
   width: 85%;
@@ -13,6 +15,9 @@
       color: #95989a;
     }
     &__body {
+      @include medium {
+        font-size: 12px;
+      }
       &-tr {
         &:nth-of-type(odd) {
           background-color: rgba(0, 102, 135, 0.1);
@@ -31,6 +36,17 @@
           height: 40px;
           line-height: 35px;
           font-size: 22px;
+          @include medium {
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            line-height: 17px;
+          }
+        }
+      }
+      &-flight {
+        @include medium {
+          padding-right: 10px;
         }
       }
       &-compName {
@@ -45,6 +61,9 @@
       }
       &-details {
         min-width: 150px;
+        @include medium {
+          display: none;
+        }
       }
     }
   }
@@ -57,10 +76,16 @@
     top: 5%;
     position: relative;
     display: inline-block;
+    @include medium {
+      max-height: 60%;
+    }
   }
   &-p {
     margin: 0;
     margin-top: 15px;
+    @include medium {
+      margin-top: 0;
+    }
   }
 }
 

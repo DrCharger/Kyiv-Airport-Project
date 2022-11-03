@@ -7,6 +7,9 @@
   margin-top: 93px;
   background: #e7efec;
   flex: 1 0 auto;
+  @include medium {
+    margin-top: 70px;
+  }
 }
 
 .btn {

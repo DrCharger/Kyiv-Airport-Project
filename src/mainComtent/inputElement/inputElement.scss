@@ -16,6 +16,9 @@
     font-size: 70px;
     margin-bottom: 0.5rem;
     margin-top: 0;
+    @include medium {
+      font-size: 45px;
+    }
   }
   &__action {
     margin-top: 24px;

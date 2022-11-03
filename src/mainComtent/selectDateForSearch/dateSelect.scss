@@ -43,30 +43,45 @@
 .days {
   margin-left: 30px;
   display: flex;
-  width: 40%;
+  width: 50%;
   padding-top: 3px;
   cursor: pointer;
+
   &-other {
     text-align: center;
     color: #b8b9b9;
     border-bottom: 3px solid #d0d0d0;
     flex-basis: 33.33333%;
+    @include medium {
+      margin-right: 5px;
+    }
   }
   &-today {
     color: #1eb7ee;
     text-align: center;
     border-bottom: 3px solid #1eb7ee;
     flex-basis: 33.33333%;
+    @include medium {
+      margin-right: 5px;
+    }
   }
 }
 
 .day-num {
   font-size: 12px;
   margin-bottom: 8px;
+  @include medium {
+    font-size: 10px;
+    margin-top: 2px;
+  }
 }
 .day-title {
   font-weight: 700;
   text-transform: uppercase;
+  @include medium {
+    font-size: 12px;
+    margin-top: 2px;
+  }
 }
 
 a {

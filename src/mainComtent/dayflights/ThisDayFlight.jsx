@@ -40,7 +40,9 @@ const ThisDayFlight = ({ allFlightList }) => {
                   <th scope="col">Статус</th>
                   <th scope="col">Авіакомпанія</th>
                   <th scope="col">Рейс</th>
-                  <th scope="col">Inshe</th>
+                  <th scope="col" className="table-flight__body-details">
+                    Inshe
+                  </th>
                 </tr>
               </thead>
               <tbody mode="out-in" className="table-flight__body">
