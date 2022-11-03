@@ -1,3 +1,4 @@
+@import '../../index.scss';
 .input-content {
   max-width: 1140px;
   &-justify {
@@ -20,12 +21,20 @@
     margin-top: 24px;
     position: relative;
     overflow: hidden;
+    @include medium {
+      max-width: 100%;
+    }
     &-img {
       position: absolute;
       font-size: 30px;
       top: 25px;
       left: 15px;
       color: #808080;
+      @include medium {
+        font-size: 15px;
+        top: 13px;
+        left: 15px;
+      }
     }
     &-fly {
       height: 80px;
@@ -33,6 +42,12 @@
       padding-left: 70px;
       padding-right: 220px;
       border: none;
+      border-radius: 0 80px 0 0;
+
+      @include medium {
+        height: 40px;
+        font-size: 15px;
+      }
     }
     &-btn {
       cursor: pointer;

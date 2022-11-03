@@ -1,3 +1,4 @@
+@import '../index.scss';
 .search-flights {
   padding: 40px 0 20px;
   width: 100%;
@@ -20,4 +21,8 @@
   font-size: 24px;
   border: 0;
   line-height: 60px;
+  @include medium {
+    line-height: 40px;
+    font-size: 16px;
+  }
 }

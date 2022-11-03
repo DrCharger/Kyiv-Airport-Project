@@ -1,7 +1,9 @@
+@import '../index.scss';
+
 .header {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 99;
   box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
   height: 92px;
@@ -21,20 +23,20 @@
 
 .logo {
   flex: 0 0 25%;
-  // max-width: 25%;
-  margin-left: 120px;
 
+  margin-left: 120px;
+  @include medium {
+    margin: 10px;
+  }
   &_img {
     max-width: 150px;
   }
 }
 
 .navbar {
-  // justify-content: flex-start;
-  // flex-flow: row nowrap;
-  // padding: 0;
   flex-grow: 1;
   height: 100%;
+
   &-click {
     background: linear-gradient(-90deg, #ffffff 3%, #1eb7ee 100%);
     color: #008ab7;
@@ -43,12 +45,11 @@
   &_nav {
     margin: 0;
     display: flex;
-    // flex-basis: 100%;
-    // flex-grow: 1;
     justify-content: flex-end;
-    // flex-direction: row;
     height: 100%;
-
+    @include medium {
+      display: none;
+    }
     &_item {
       cursor: pointer;
       display: flex;
@@ -65,6 +66,22 @@
         background: linear-gradient(-90deg, #ffffff 3%, #1eb7ee 100%);
         color: #008ab7;
       }
+    }
+  }
+}
+
+.medium {
+  display: none;
+  @include medium {
+    display: block;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin-right: 50px;
+    &-icon {
+      cursor: pointer;
     }
   }
 }

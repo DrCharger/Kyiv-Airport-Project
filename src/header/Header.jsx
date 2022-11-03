@@ -48,6 +48,13 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <div className="medium">
+            {' '}
+            <i
+              className="fa-solid fa-bars medium-icon"
+              onClick={() => alert('More info will be nextTime')}
+            ></i>
+          </div>
         </div>
       </div>
       {isOpened && <Banner bannerInfo={bannerData} />}
