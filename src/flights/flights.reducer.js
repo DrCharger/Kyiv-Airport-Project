@@ -1,4 +1,4 @@
-import { today } from '../mainComtent/Arrival-Departure/TabConteny';
+import { today } from '../time.utilits/time.utilits';
 import { FIND_A_DATE, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER } from './flights.actions';
 
 const initialState = {

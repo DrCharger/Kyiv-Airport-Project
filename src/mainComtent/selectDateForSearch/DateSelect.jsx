@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import moment from 'moment/moment';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useSearchParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import { findDate } from '../../flights/flights.actions';
+import { tomorrow, yesterday, today } from '../../time.utilits/time.utilits';
+import 'react-datepicker/dist/react-datepicker.css';
+import './dateSelect.scss';
 
-const tomorrow = new Date(moment(new Date()).add(1, 'days').format());
-const yesterday = new Date(moment(new Date()).subtract(1, 'days').format());
-export const today = date => moment(date).format('DD-MM-YYYY');
-
-const TabContent = ({ searchDate }) => {
+const DateSelect = ({ searchDate }) => {
   const [toggler, setToggler] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -49,7 +46,6 @@ const TabContent = ({ searchDate }) => {
       </div>
       {toggler && (
         <DatePicker
-          selected={new Date()}
           onChange={date => handleChange(date)}
           onSelect={() => setToggler(false)}
           inline
@@ -63,4 +59,4 @@ const mapDispatch = {
   searchDate: findDate,
 };
 
-export default connect(null, mapDispatch)(TabContent);
+export default connect(null, mapDispatch)(DateSelect);

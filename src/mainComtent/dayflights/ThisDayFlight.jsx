@@ -2,7 +2,8 @@ import React from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import './thisDayFlight.scss';
 import TodayFlight from './TodayFlight';
-import NoFlights from './NoFlights';
+import NoFlights from '../noFlights/NoFlights';
+import Spinner from '../../spinner/Spinner';
 
 const ThisDayFlight = ({ allFlightList }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,11 +21,10 @@ const ThisDayFlight = ({ allFlightList }) => {
       .sort((a, b) => new Date(a.timeLandFact).getTime() - new Date(b.timeLandFact).getTime());
   }
 
-  console.log(allFlightList);
   return (
     <div className="table">
       {allFlightList === undefined ? (
-        'Privet'
+        <Spinner />
       ) : (
         <table className="table-flight">
           {whatToDo.length === 0 ? (
@@ -46,7 +46,7 @@ const ThisDayFlight = ({ allFlightList }) => {
                 {whatToDo.map(flight => (
                   <TodayFlight key={flight.ID} flightInfo={flight} flightId={flightId} />
                 ))}
-              </tbody>{' '}
+              </tbody>
             </>
           )}
         </table>

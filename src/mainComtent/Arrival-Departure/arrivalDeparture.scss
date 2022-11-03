@@ -3,142 +3,38 @@
 }
 
 .tablist {
-  border-bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
-  margin-top: 0;
+  // border-bottom: 0;
+  // display: flex;
+  // flex-wrap: wrap;
+  // padding-left: 0;
+  // margin-bottom: 0;
+  // margin-top: 0;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
   &-container {
     display: flex;
-    margin-right: auto;
-    margin-left: auto;
-    width: 85%;
     &-btn {
       margin-right: -60px;
       border-radius: 60px 0 0 0;
-      cursor: pointer;
-      z-index: 1;
-      flex: 1 1 auto;
-      text-transform: uppercase;
-      position: relative;
-      font-weight: 600;
-      overflow: hidden;
-      background: #73d2f0;
-      padding: 0;
-      border: 0;
-      font-size: 24px;
-      line-height: 60px;
       &-text {
         color: #fff;
       }
     }
     &-btn2 {
-      cursor: pointer;
-      flex: 1 1 auto;
-      text-transform: uppercase;
-      position: relative;
-      font-weight: 600;
-      background: #73d2f0;
-      overflow: hidden;
       border-radius: 0 60px 0 0;
-      padding: 0;
-      font-size: 24px;
-      border: 1px solid transparent;
     }
   }
 }
-.press {
+.pressBtn {
   cursor: default;
-  color: #1eb7ee !important;
   background-color: #fff;
   z-index: 5;
   border-radius: 60px 60px 0 0;
 }
-
-.result-container {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 85%;
-  padding-top: 25px;
-  background: #fff;
-}
-
-.calendar-date {
-  display: flex;
-  &__input {
-    margin-left: 20px;
-
-    &-value {
-      position: relative;
-      font-size: 12px;
-      font-weight: 700;
-      color: #1eb7ee;
-      display: inline-block;
-      text-align: center;
-      &::after {
-        content: '';
-        height: 50px;
-        width: 50px;
-        display: block;
-        background: #1eb7ee url(https://dreamy-cannoli-af2a17.netlify.app/1b286ab9606ba0071cc0.SVG)
-          center no-repeat;
-        background-size: 70%;
-      }
-    }
-  }
-}
-
-.days {
-  margin-left: 30px;
-  display: flex;
-  width: 300px;
-  position: relative;
-  padding-top: 5px;
-  &-other {
-    cursor: pointer;
-    text-align: center;
-    color: #b8b9b9;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #d0d0d0;
-    transition: 0.3s ease-out;
-    position: relative;
-    flex-basis: 33.33333%;
-    max-width: 33.33333%;
-  }
-  &-today {
-    color: #1eb7ee;
-    cursor: pointer;
-    text-align: center;
-    padding-bottom: 5px;
-    border-bottom: 3px solid #1eb7ee;
-    transition: 0.3s ease-out;
-    position: relative;
-    flex-basis: 33.33333%;
-    max-width: 33.33333%;
-  }
-}
-
-.day-num {
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-.day-title {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-a {
-  text-decoration: none;
-  // display: inline-block;
-  // transform: translateY(2px);
-  // margin-right: 15px;
-}
-
-.react-datepicker {
-  position: absolute !important;
+.pressText {
+  cursor: default;
+  color: #1eb7ee !important;
 }
 
 .start__page {
@@ -148,4 +44,9 @@ a {
   justify-content: center;
   height: 50vh;
   font-size: 50px;
+}
+
+.plane-img {
+  color: #fff;
+  margin-right: 50px;
 }

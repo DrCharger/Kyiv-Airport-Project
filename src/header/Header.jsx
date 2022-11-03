@@ -31,7 +31,7 @@ const Header = () => {
           <Link to="/">
             <img
               className="logo_img"
-              srcSet="https://iev.aero/_nuxt/img/logo@2x.2d2c20b.png"
+              srcSet="https://raw.githubusercontent.com/DrCharger/Kyiv-Airport-Project/master/src/img/logo%402x.webp"
               alt="Logo"
             />
           </Link>

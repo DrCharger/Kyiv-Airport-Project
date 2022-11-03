@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { dateSelector } from '../../flights/flights.selectors';
+import './inputElement.scss';
 
 const InputElement = ({ searchedDate }) => {
   const [inputElem, setElement] = useState('');
@@ -9,7 +11,6 @@ const InputElement = ({ searchedDate }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     const params = {};
     if (e.target.search.value.length) params.search = inputElem;
     params.date = searchedDate;
@@ -22,7 +23,7 @@ const InputElement = ({ searchedDate }) => {
         <div className="input-content-justify-flex">
           <h2 className="input-content__title">ПОШУК РЕЙСУ</h2>
           <div className="input-content__action">
-            <i></i>
+            <i className="fa-solid fa-magnifying-glass input-content__action-img"></i>
             <form autoComplete="off" onSubmit={handleSubmit}>
               <input
                 className="input-content__action-fly"
@@ -43,7 +44,7 @@ const InputElement = ({ searchedDate }) => {
 
 const mapState = state => {
   return {
-    searchedDate: state.flights.date,
+    searchedDate: dateSelector(state),
   };
 };
 

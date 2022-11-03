@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Link, Routes, useSearchParams, useLocation } from 'react-router-dom';
-import './arrivalDeparture.scss';
-import TabContent, { today } from './TabConteny';
-import ThisDayFlight from '../dayflights/ThisDayFlight';
-import { useState, useEffect } from 'react';
-import classNames from 'classnames';
 import { connect } from 'react-redux';
+import ThisDayFlight from '../dayflights/ThisDayFlight';
 import { getFlightList } from '../../flights/flights.actions';
+import DateSelect from '../selectDateForSearch/DateSelect';
+import { today } from '../../time.utilits/time.utilits';
+import { dateSelector, listSelector } from '../../flights/flights.selectors';
+import classNames from 'classnames';
+import './arrivalDeparture.scss';
 
 const ArrivalDeparture = ({ fetcher, list }) => {
   const [searchParams, setSearchParams] = useSearchParams({ date: today(new Date()) });
@@ -14,59 +15,63 @@ const ArrivalDeparture = ({ fetcher, list }) => {
   let dayToFind = searchParams.get('date');
   const whatToSearch = searchParams.get('search');
 
+  const searcherD = searchParams.has('search')
+    ? `/departure?date=${dayToFind}&&search=${whatToSearch}`
+    : `/departure?date=${dayToFind}`;
+  const searcherA = searchParams.has('search')
+    ? `/arrival?date=${dayToFind}&&search=${whatToSearch}`
+    : `/arrival?date=${dayToFind}`;
+
   useEffect(() => fetcher(dayToFind), [searchParams]);
 
   return (
     <div className="search-result">
-      <div className="tabs">
+      <div>
         <div className="tablist">
           <div className="tablist-container">
             <button
-              className={classNames('tablist-container-btn', {
-                press: location.pathname === '/departure',
+              className={classNames('btn tablist-container-btn', {
+                pressBtn: location.pathname === '/departure',
               })}
             >
-              <Link
-                to={
-                  searchParams.has('search')
-                    ? `/departure?date=${dayToFind}&&search=${whatToSearch}`
-                    : `/departure?date=${dayToFind}`
-                }
-              >
+              <Link to={searcherD}>
+                <i
+                  className={classNames('fa-solid fa-plane-departure plane-img', {
+                    pressText: location.pathname === '/departure',
+                  })}
+                ></i>
                 <span
                   className={classNames('tablist-container-btn-text', {
-                    press: location.pathname === '/departure',
+                    pressText: location.pathname === '/departure',
                   })}
                 >
-                  Departure
+                  Виліт
                 </span>
               </Link>
             </button>
             <button
-              className={classNames('tablist-container-btn2', {
-                press: location.pathname === '/arrival',
+              className={classNames('btn tablist-container-btn2', {
+                pressBtn: location.pathname === '/arrival',
               })}
             >
-              <Link
-                to={
-                  searchParams.has('search')
-                    ? `/arrival?date=${dayToFind}&&search=${whatToSearch}`
-                    : `/arrival?date=${dayToFind}`
-                }
-              >
-                {' '}
+              <Link to={searcherA}>
+                <i
+                  className={classNames('fa-solid fa-plane-arrival plane-img', {
+                    pressText: location.pathname === '/arrival',
+                  })}
+                ></i>
                 <span
                   className={classNames('tablist-container-btn-text', {
-                    press: location.pathname === '/arrival',
+                    pressText: location.pathname === '/arrival',
                   })}
                 >
-                  Arrivals
+                  Приліт
                 </span>
               </Link>
             </button>
           </div>
         </div>
-        <TabContent />
+        <DateSelect />
       </div>
 
       <Routes>
@@ -74,7 +79,7 @@ const ArrivalDeparture = ({ fetcher, list }) => {
           path={`/:flightId`}
           element={<ThisDayFlight allFlightList={list.body} day={dayToFind} />}
         />
-        <Route path="/" element={<div className="start__page">Choose Departure or Arrival</div>} />
+        <Route path="/" element={<div className="start__page">Виберіть відліт чи приліт</div>} />
       </Routes>
     </div>
   );
@@ -82,8 +87,8 @@ const ArrivalDeparture = ({ fetcher, list }) => {
 
 const mapState = state => {
   return {
-    list: state.flights.flightList,
-    searchedDate: state.flights.date,
+    list: listSelector(state),
+    searchedDate: dateSelector(state),
   };
 };
 
