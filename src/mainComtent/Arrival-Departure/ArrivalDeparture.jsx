@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, Routes, useSearchParams } from 'react-router-dom';
+import { Route, Link, Routes, useSearchParams, useLocation } from 'react-router-dom';
 import './arrivalDeparture.scss';
 import TabContent, { today } from './TabConteny';
 import ThisDayFlight from '../dayflights/ThisDayFlight';
@@ -9,13 +9,11 @@ import { connect } from 'react-redux';
 import { getFlightList } from '../../flights/flights.actions';
 
 const ArrivalDeparture = ({ fetcher, list }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [colorToggle, setColor] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams({ date: today(new Date()) });
+  const location = useLocation();
   let dayToFind = searchParams.get('date');
-  if (searchParams.get('date') === null) {
-    dayToFind = today(new Date());
-  }
   const whatToSearch = searchParams.get('search');
+
   useEffect(() => fetcher(dayToFind), [searchParams]);
 
   return (
@@ -23,7 +21,11 @@ const ArrivalDeparture = ({ fetcher, list }) => {
       <div className="tabs">
         <div className="tablist">
           <div className="tablist-container">
-            <button className={classNames('tablist-container-btn', { press: colorToggle })}>
+            <button
+              className={classNames('tablist-container-btn', {
+                press: location.pathname === '/departure',
+              })}
+            >
               <Link
                 to={
                   searchParams.has('search')
@@ -32,14 +34,19 @@ const ArrivalDeparture = ({ fetcher, list }) => {
                 }
               >
                 <span
-                  className={classNames('tablist-container-btn-text', { press: colorToggle })}
-                  onClick={() => setColor(true)}
+                  className={classNames('tablist-container-btn-text', {
+                    press: location.pathname === '/departure',
+                  })}
                 >
                   Departure
                 </span>
               </Link>
             </button>
-            <button className={classNames('tablist-container-btn2', { press: !colorToggle })}>
+            <button
+              className={classNames('tablist-container-btn2', {
+                press: location.pathname === '/arrival',
+              })}
+            >
               <Link
                 to={
                   searchParams.has('search')
@@ -49,8 +56,9 @@ const ArrivalDeparture = ({ fetcher, list }) => {
               >
                 {' '}
                 <span
-                  className={classNames('tablist-container-btn-text', { press: !colorToggle })}
-                  onClick={() => setColor(false)}
+                  className={classNames('tablist-container-btn-text', {
+                    press: location.pathname === '/arrival',
+                  })}
                 >
                   Arrivals
                 </span>
@@ -66,7 +74,7 @@ const ArrivalDeparture = ({ fetcher, list }) => {
           path={`/:flightId`}
           element={<ThisDayFlight allFlightList={list.body} day={dayToFind} />}
         />
-        <Route path="/" element={<span>No Flights</span>} />
+        <Route path="/" element={<div className="start__page">Choose Departure or Arrival</div>} />
       </Routes>
     </div>
   );
@@ -75,6 +83,7 @@ const ArrivalDeparture = ({ fetcher, list }) => {
 const mapState = state => {
   return {
     list: state.flights.flightList,
+    searchedDate: state.flights.date,
   };
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import './thisDayFlight.scss';
 import TodayFlight from './TodayFlight';
+import NoFlights from './NoFlights';
 
 const ThisDayFlight = ({ allFlightList }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,28 +20,37 @@ const ThisDayFlight = ({ allFlightList }) => {
       .sort((a, b) => new Date(a.timeLandFact).getTime() - new Date(b.timeLandFact).getTime());
   }
 
+  console.log(allFlightList);
   return (
     <div className="table">
-      <table className="table-flight">
-        <thead className="table-flight__header">
-          <tr>
-            <th scope="col">Термінал</th>
-            <th scope="col">Розклад</th>
-            <th scope="col">Напрямок</th>
-            <th scope="col">Статус</th>
-            <th scope="col">Авіакомпанія</th>
-            <th scope="col">Рейс</th>
-            <th scope="col">Inshe</th>
-          </tr>
-        </thead>
-        <tbody mode="out-in" className="table-flight__body">
-          {allFlightList === undefined
-            ? null
-            : whatToDo.map(flight => (
-                <TodayFlight key={flight.ID} flightInfo={flight} flightId={flightId} />
-              ))}
-        </tbody>
-      </table>
+      {allFlightList === undefined ? (
+        'Privet'
+      ) : (
+        <table className="table-flight">
+          {whatToDo.length === 0 ? (
+            <NoFlights />
+          ) : (
+            <>
+              <thead className="table-flight__header">
+                <tr>
+                  <th scope="col">Термінал</th>
+                  <th scope="col">Розклад</th>
+                  <th scope="col">Напрямок</th>
+                  <th scope="col">Статус</th>
+                  <th scope="col">Авіакомпанія</th>
+                  <th scope="col">Рейс</th>
+                  <th scope="col">Inshe</th>
+                </tr>
+              </thead>
+              <tbody mode="out-in" className="table-flight__body">
+                {whatToDo.map(flight => (
+                  <TodayFlight key={flight.ID} flightInfo={flight} flightId={flightId} />
+                ))}
+              </tbody>{' '}
+            </>
+          )}
+        </table>
+      )}
     </div>
   );
 };

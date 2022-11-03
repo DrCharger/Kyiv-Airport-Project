@@ -1,9 +1,10 @@
+import { today } from '../mainComtent/Arrival-Departure/TabConteny';
 import { FIND_A_DATE, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER } from './flights.actions';
 
 const initialState = {
   flightList: [],
   isFetching: false,
-  date: '',
+  date: today(new Date()),
 };
 
 const flightsReducer = (state = initialState, action) => {
