@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment/moment';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const formatTime = time => moment(new Date(time)).format('HH:mm');
 
@@ -56,5 +57,14 @@ const TodayFlight = ({ flightInfo, flightId }) => {
       <td className="table-flight__body-details"></td>
     </tr>
   );
+};
+
+TodayFlight.propTypes = {
+  flightInfo: PropTypes.shape().isRequired,
+  flightId: PropTypes.string,
+};
+
+TodayFlight.defaultProps = {
+  flightId: 'departure',
 };
 export default TodayFlight;

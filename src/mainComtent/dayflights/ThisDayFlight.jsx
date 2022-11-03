@@ -4,6 +4,7 @@ import './thisDayFlight.scss';
 import TodayFlight from './TodayFlight';
 import NoFlights from '../noFlights/NoFlights';
 import Spinner from '../../spinner/Spinner';
+import PropTypes from 'prop-types';
 
 const ThisDayFlight = ({ allFlightList }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,6 +54,10 @@ const ThisDayFlight = ({ allFlightList }) => {
       )}
     </div>
   );
+};
+
+ThisDayFlight.propTypes = {
+  allFlightList: PropTypes.shape(),
 };
 
 export default ThisDayFlight;

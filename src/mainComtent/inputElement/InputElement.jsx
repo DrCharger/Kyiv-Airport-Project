@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { dateSelector } from '../../flights/flights.selectors';
+import PropTypes from 'prop-types';
 import './inputElement.scss';
 
 const InputElement = ({ searchedDate }) => {
@@ -46,6 +47,14 @@ const mapState = state => {
   return {
     searchedDate: dateSelector(state),
   };
+};
+
+InputElement.propTypes = {
+  searchedDate: PropTypes.string,
+};
+
+InputElement.defaultProps = {
+  searchedDate: '11-01-2022',
 };
 
 export default connect(mapState)(InputElement);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const BannerItems = ({ about }) => {
   return (
@@ -10,6 +11,10 @@ const BannerItems = ({ about }) => {
       ))}
     </ul>
   );
+};
+
+BannerItems.propTypes = {
+  about: PropTypes.shape().isRequired,
 };
 
 export default BannerItems;

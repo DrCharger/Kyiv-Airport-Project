@@ -5,7 +5,7 @@ import ThisDayFlight from '../dayflights/ThisDayFlight';
 import { getFlightList } from '../../flights/flights.actions';
 import DateSelect from '../selectDateForSearch/DateSelect';
 import { today } from '../../time.utilits/time.utilits';
-import { dateSelector, listSelector } from '../../flights/flights.selectors';
+import { listSelector } from '../../flights/flights.selectors';
 import classNames from 'classnames';
 import './arrivalDeparture.scss';
 
@@ -88,7 +88,6 @@ const ArrivalDeparture = ({ fetcher, list }) => {
 const mapState = state => {
   return {
     list: listSelector(state),
-    searchedDate: dateSelector(state),
   };
 };
 

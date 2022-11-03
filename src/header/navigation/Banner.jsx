@@ -1,6 +1,7 @@
 import React from 'react';
 import './info.scss';
 import BannerItems from './BannerItems';
+import PropTypes from 'prop-types';
 
 const Banner = ({ bannerInfo }) => {
   return (
@@ -28,6 +29,9 @@ const Banner = ({ bannerInfo }) => {
       </div>
     </div>
   );
+};
+Banner.propTypes = {
+  bannerInfo: PropTypes.shape().isRequired,
 };
 
 export default Banner;
