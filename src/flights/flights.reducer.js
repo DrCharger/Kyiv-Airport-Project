@@ -1,10 +1,11 @@
 import { today } from '../time.utilits/time.utilits';
-import { FIND_A_DATE, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER } from './flights.actions';
+import { FIND_A_DATE, FLIGHTS_LIST_RECIEVED, SHOW_SPINNER, FLIGHT_ID } from './flights.actions';
 
 const initialState = {
   flightList: [],
   isFetching: false,
   date: today(new Date()),
+  id: '',
 };
 
 const flightsReducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const flightsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+      };
+    case FLIGHT_ID:
+      return {
+        ...state,
+        id: action.payload.id,
       };
     case FIND_A_DATE:
       return {

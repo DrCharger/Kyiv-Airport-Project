@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment/moment';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const formatTime = time => moment(new Date(time)).format('HH:mm');
@@ -54,7 +54,9 @@ const TodayFlight = ({ flightInfo, flightId }) => {
         <p className="logo-p">{airline.ua.name}</p>
       </td>
       <td className="table-flight__body-flight">{flightNum}</td>
-      <td className="table-flight__body-details"></td>
+      <td className="table-flight__body-details">
+        <Link to={`/${flightId}/${flightInfo.ID}`}>Вибрати Місце</Link>
+      </td>
     </tr>
   );
 };

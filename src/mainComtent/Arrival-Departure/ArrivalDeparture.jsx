@@ -8,8 +8,9 @@ import { today } from '../../time.utilits/time.utilits';
 import { listSelector } from '../../flights/flights.selectors';
 import classNames from 'classnames';
 import './arrivalDeparture.scss';
+import TakeYourPlace from '../takeYourPlace/TakeYourPlace';
 
-const ArrivalDeparture = ({ fetcher, list }) => {
+const ArrivalDeparture = ({ fetcher, list, date }) => {
   const [searchParams, setSearchParams] = useSearchParams({ date: today(new Date()) });
   const location = useLocation();
   let dayToFind = searchParams.get('date');
@@ -22,7 +23,9 @@ const ArrivalDeparture = ({ fetcher, list }) => {
     ? `/arrival?date=${dayToFind}&&search=${whatToSearch}`
     : `/arrival?date=${dayToFind}`;
 
-  useEffect(() => fetcher(dayToFind), [searchParams]);
+  useEffect(() => {
+    fetcher(dayToFind);
+  }, [date]);
 
   return (
     <div className="search-result">
@@ -76,10 +79,11 @@ const ArrivalDeparture = ({ fetcher, list }) => {
 
       <Routes>
         <Route
-          path={`/:flightId`}
+          path="/:flightId"
           element={<ThisDayFlight allFlightList={list.body} day={dayToFind} />}
         />
         <Route path="/" element={<div className="start__page">Виберіть відліт чи приліт</div>} />
+        <Route path="/:flightId/:seatsId" element={<TakeYourPlace item={list.body} />} />
       </Routes>
     </div>
   );
@@ -87,6 +91,7 @@ const ArrivalDeparture = ({ fetcher, list }) => {
 
 const mapState = state => {
   return {
+    date: state.flights.date,
     list: listSelector(state),
   };
 };
