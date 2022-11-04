@@ -13,6 +13,10 @@
     &-btn {
       margin-right: -60px;
       border-radius: 60px 0 0 0;
+      @include small {
+        margin-right: -30px;
+      }
+
       &-text {
         color: #fff;
       }
@@ -45,7 +49,10 @@
 .plane-img {
   color: #fff;
   margin-right: 50px;
-  @include small {
+  @include medium {
     margin-right: 20px;
+  }
+  @include small {
+    margin-right: 10px;
   }
 }

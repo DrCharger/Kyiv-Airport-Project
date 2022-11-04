@@ -8,6 +8,10 @@
   width: 85%;
   padding-top: 25px;
   background: #fff;
+  @include small {
+    padding: 0;
+    padding-top: 15px;
+  }
 }
 
 .calendar-date {
@@ -19,9 +23,14 @@
       font-size: 12px;
       font-weight: 700;
       color: #1eb7ee;
+      cursor: pointer;
       @include medium {
         font-weight: 400;
         font-size: 11px;
+      }
+      @include small {
+        font-weight: 300;
+        font-size: 9px;
       }
       &::after {
         content: '';
@@ -35,6 +44,10 @@
           height: 35px;
           width: 35px;
         }
+        @include small {
+          height: 25px;
+          width: 25px;
+        }
       }
     }
   }
@@ -46,6 +59,10 @@
   width: 50%;
   padding-top: 3px;
   cursor: pointer;
+  @include small {
+    margin-left: 15px;
+    width: auto;
+  }
 
   &-other {
     text-align: center;
@@ -74,6 +91,10 @@
     font-size: 10px;
     margin-top: 2px;
   }
+  @include small {
+    font-size: 9px;
+    margin-top: 4.5px;
+  }
 }
 .day-title {
   font-weight: 700;
@@ -81,6 +102,10 @@
   @include medium {
     font-size: 12px;
     margin-top: 2px;
+  }
+  @include small {
+    font-size: 9px;
+    margin-top: 4.5px;
   }
 }
 
@@ -91,4 +116,8 @@ a {
 .react-datepicker {
   position: absolute !important;
   left: 120px;
+
+  @include small {
+    left: 15px;
+  }
 }

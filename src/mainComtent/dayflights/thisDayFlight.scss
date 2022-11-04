@@ -6,6 +6,9 @@
   background-color: #fff;
   margin-right: auto;
   margin-left: auto;
+  @include small {
+    padding-top: 15px;
+  }
 
   &-flight {
     width: 100%;
@@ -13,10 +16,16 @@
     border-collapse: collapse;
     &__header {
       color: #95989a;
+      @include small {
+        font-size: 9px;
+      }
     }
     &__body {
       @include medium {
         font-size: 12px;
+      }
+      @include small {
+        font-size: 9px;
       }
       &-tr {
         &:nth-of-type(odd) {
@@ -26,6 +35,9 @@
       &-terminal {
         text-align: center;
         padding: 16px 10px;
+        @include small {
+          padding: 10px 5px;
+        }
         &__text {
           color: #63c745;
           font-weight: 700;
@@ -42,11 +54,20 @@
             height: 20px;
             line-height: 17px;
           }
+          @include small {
+            font-size: 9px;
+            width: 15px;
+            height: 15px;
+            line-height: 13px;
+          }
         }
       }
       &-flight {
         @include medium {
           padding-right: 10px;
+        }
+        @include small {
+          padding-right: 0;
         }
       }
       &-compName {
@@ -78,6 +99,11 @@
     display: inline-block;
     @include medium {
       max-height: 60%;
+    }
+    @include small {
+      top: 18%;
+      max-height: 40%;
+      padding-left: 5px;
     }
   }
   &-p {
