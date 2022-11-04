@@ -62,22 +62,38 @@
           }
         }
       }
+      &-city {
+        width: 15%;
+      }
       &-flight {
         @include medium {
           padding-right: 10px;
         }
         @include small {
-          padding-right: 0;
+          padding-right: 8px;
         }
       }
       &-compName {
-        display: flex;
-        align-items: center;
         line-height: 100%;
+        margin: 0;
+        position: relative;
         &__container {
           height: 40px;
           margin-top: 10px;
           margin-right: 5px;
+          position: absolute;
+          top: 3px;
+          left: -20px;
+
+          @include medium {
+            top: 3px;
+            left: -10px;
+          }
+          @include small {
+            left: -12px;
+
+            top: 5px;
+          }
         }
       }
       &-details {
@@ -92,26 +108,22 @@
 
 .logo {
   &-img {
-    max-width: 100%;
     max-height: 95%;
-    top: 5%;
-    position: relative;
+
     display: inline-block;
+    margin: 0;
     @include medium {
       max-height: 60%;
     }
     @include small {
       top: 18%;
-      max-height: 40%;
+      max-height: 20%;
       padding-left: 5px;
     }
   }
   &-p {
     margin: 0;
-    margin-top: 15px;
-    @include medium {
-      margin-top: 0;
-    }
+    padding-left: 10px;
   }
 }
 

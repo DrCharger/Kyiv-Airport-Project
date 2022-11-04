@@ -45,7 +45,7 @@ const TodayFlight = ({ flightInfo, flightId }) => {
         <span className="table-flight__body-terminal__text">{term}</span>
       </td>
       <td>{time}</td>
-      <td>{city}</td>
+      <td className="table-flight__body-city">{city}</td>
       <td>{status}</td>
       <td className="table-flight__body-compName">
         <div className="table-flight__body-compName__container ">
