@@ -53,6 +53,7 @@ const TakeYourPlace = ({ item, day, getObjPrice }) => {
       board: flightNum,
       seats: seatsChosen,
       price: flightPrice,
+      date: searchParams.get('date'),
     };
     getObjPrice(newObj);
     setSeats([]);

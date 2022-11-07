@@ -19,7 +19,11 @@ const Basket = ({ basketInfo }) => {
             </div>
             <div className="board-main-info">
               <div className="board-main-info__QR">
-                <img src="" alt="QR-code" />
+                <img
+                  className="board-main-info-img"
+                  src="https://raw.githubusercontent.com/DrCharger/Kyiv-Airport-Project/master/src/img/vivod-shtrih-koda-na-sayte-1.jpg"
+                  alt="QR-code"
+                />
               </div>
               <div className="board-main-info__passenger">
                 <div className="board-main-info__passenger-all">
@@ -80,6 +84,11 @@ const Basket = ({ basketInfo }) => {
           </div>
         </div>
       ))}
+
+      <div className="wholePrice">{`Потрібно оплатити: ${basketInfo.price} $`}</div>
+      <button onClick={() => alert('Дякую, що обрали нашу авіакомпанію. Гарного дня')}>
+        Оплатити
+      </button>
     </div>
   );
 };

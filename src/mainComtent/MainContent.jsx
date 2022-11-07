@@ -10,9 +10,8 @@ const MainContent = () => {
     <main className="search-flights">
       <InputElement />
       <Routes>
-        {/* <Route path="*" element={<ArrivalDeparture />} /> */}
-        <Route path={`*`} element={<Basket />} />
-        {/* <Route path={`/buyTickets`} element={<Basket />} /> */}
+        <Route path="*" element={<ArrivalDeparture />} />
+        <Route path={`/buyTickets`} element={<Basket />} />
       </Routes>
     </main>
   );

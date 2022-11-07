@@ -32,9 +32,15 @@
       border-radius: 0 0 15px 15px / 0 0 15px 15px;
       border-right: 2px dashed #000;
       width: 100%;
+      &-img {
+        transform: rotate(90deg);
+        width: 130%;
+        margin-top: 40px;
+      }
 
       &__QR {
         width: 20%;
+        margin-right: 30px;
       }
       &__passenger {
         width: 80%;
