@@ -18,19 +18,65 @@ const Basket = ({ basketInfo }) => {
               />
             </div>
             <div className="board-main-info">
-              <div className="board-info__QR">
-                <img
-                  src="https://png.pngtree.com/png-vector/20210331/ourmid/pngtree-rectangular-display-data-barcode-png-image_3176691.jpg"
-                  alt="QR-code"
-                />
+              <div className="board-main-info__QR">
+                <img src="" alt="QR-code" />
               </div>
-              <div className="board-info__passenger"></div>
+              <div className="board-main-info__passenger">
+                <div className="board-main-info__passenger-all">
+                  <div className="board-main-info__passenger-all__PIB">
+                    <span>Name of Passenger</span>
+                    <span>__________________</span>
+                  </div>
+                  <div className="board-main-info__passenger-all__flight">
+                    <span className="board-main-info__passenger-all__flight__title">Flight</span>
+                    <span className="board-main-info__passenger-all__flight__board">
+                      {basketInfo.board}
+                    </span>
+                  </div>
+                  <div className="board-main-info__passenger-all__date">
+                    <span>DATE</span>
+                    <span>{basketInfo.date}</span>
+                  </div>
+                  <div className="board-main-info__passenger-all__seat">
+                    <span>Seat</span>
+                    <span className="board-main-info__passenger-all__seat-pass">{pass}</span>
+                  </div>
+                </div>
+                <div className="board-main-info__passenger-fromTo">
+                  <div>
+                    <div>{`FROM: KYIV`}</div>
+                    <div>{`TO: ${basketInfo.trip}`}</div>
+                  </div>
+                </div>
+                <div className="board-main-info__passenger-gate">{`Boarding time: _________`}</div>
+              </div>
             </div>
           </div>
 
           <div className="crack">
             <div className="crack-header">Econom Class</div>
-            <div className="crack-info"></div>
+            <div className="crack-info">
+              <div className="board-main-info__passenger-all__PIB">
+                <span>Name of Passenger</span>
+                <span>__________________</span>
+              </div>
+              <div className="crack-info-change">
+                <div className="board-main-info__passenger-all__flight">
+                  <span className="board-main-info__passenger-all__flight__title">Flight</span>
+                  <span className="board-main-info__passenger-all__flight__board">
+                    {basketInfo.board}
+                  </span>
+                </div>
+                <div className="board-main-info__passenger-all__date">
+                  <span>DATE</span>
+                  <span>{basketInfo.date}</span>
+                </div>
+              </div>
+              <div className="board-main-info__passenger-all__seat">
+                <span>Seat</span>
+                <span className="board-main-info__passenger-all__seat-pass">{pass}</span>
+              </div>
+            </div>
           </div>
         </div>
       ))}

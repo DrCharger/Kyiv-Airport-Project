@@ -25,10 +25,85 @@
   display: flex;
   &-main {
     width: 70%;
+    &-info {
+      height: 80%;
+      background-color: lightblue;
+      display: flex;
+      border-radius: 0 0 15px 15px / 0 0 15px 15px;
+      border-right: 2px dashed #000;
+      width: 100%;
+
+      &__QR {
+        width: 20%;
+      }
+      &__passenger {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        &-all {
+          display: flex;
+          text-align: center;
+          &__PIB {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            width: 25%;
+            font-size: 12px;
+          }
+          &__flight {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            width: 25%;
+            &__title {
+              font-weight: 700;
+              text-transform: lowercase;
+              letter-spacing: 1px;
+              font-size: 12px;
+            }
+            &__board {
+              font-size: 18px;
+              font-weight: 700;
+            }
+          }
+          &__date {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            width: 25%;
+            font-size: 12px;
+          }
+          &__seat {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            width: 25%;
+            font-size: 12px;
+            &-pass {
+              font-size: 18px;
+              font-weight: 700;
+            }
+          }
+        }
+
+        &-fromTo {
+          margin: 10px 0;
+          font-size: 16px;
+          letter-spacing: 1.5px;
+          font-weight: 700;
+        }
+        &-gate {
+          margin: 10px 0;
+          font-size: 16px;
+          letter-spacing: 1.5px;
+          font-weight: 700;
+        }
+      }
+    }
 
     &-header {
       background-color: #1eb7ee;
-      height: 50px;
+      height: 20%;
       border-radius: 15px 15px 0px 0px / 15px 15px 0px 0px;
       display: flex;
       justify-content: space-between;
@@ -47,4 +122,26 @@
   width: 30%;
   margin-bottom: 25px;
   height: 200px;
+  &-header {
+    background-color: #1eb7ee;
+    height: 20%;
+    border-radius: 15px 15px 0px 0px / 15px 15px 0px 0px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+  }
+  &-info {
+    padding: 10px 25px;
+    background-color: lightblue;
+    border-radius: 0 0 15px 15px / 0 0 15px 15px;
+
+    &-change {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

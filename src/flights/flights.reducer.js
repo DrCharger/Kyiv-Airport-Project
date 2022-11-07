@@ -17,6 +17,7 @@ const initialState = {
     board: 'flightNum',
     seats: ['9 A', '9 B'],
     price: 200,
+    date: '07-11-2022',
   },
 };
 
