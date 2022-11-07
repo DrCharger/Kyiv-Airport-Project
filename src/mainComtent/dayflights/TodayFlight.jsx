@@ -42,7 +42,9 @@ const TodayFlight = ({ flightInfo, flightId }) => {
   return (
     <tr className="table-flight__body-tr">
       <td className="table-flight__body-terminal">
-        <span className="table-flight__body-terminal__text">{term}</span>
+        <Link to={`/${flightId}/${flightInfo.ID}`}>
+          <span className="table-flight__body-terminal__text">{term}</span>
+        </Link>
       </td>
       <td>{time}</td>
       <td className="table-flight__body-city">{city}</td>

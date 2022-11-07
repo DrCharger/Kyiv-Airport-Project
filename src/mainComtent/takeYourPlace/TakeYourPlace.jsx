@@ -1,82 +1,62 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import PlaneContainer from './PlaneContainer';
+import { useSearchParams } from 'react-router-dom';
 import './takeYourPlace.scss';
+import { connect } from 'react-redux';
+import { dateSelector } from '../../flights/flights.selectors';
+import { useEffect } from 'react';
+import NoFlights from '../noFlights/NoFlights';
+import { useState } from 'react';
 
-const TakeYourPlace = ({ item }) => {
+const TakeYourPlace = ({ item, day }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [seatsChosen, setSeats] = useState([]);
+
   const flightID = useParams();
   let thisBoard;
   let city;
   let flightNum;
 
-  if (flightID.flightId === 'departure') {
-    thisBoard = item.departure.find(elem => elem.ID === Number(flightID.seatsId));
-    city = thisBoard['airportToID.name'];
-  } else {
-    thisBoard = item.arrival.find(elem => elem.ID === Number(flightID.seatsId));
-    city = flightInfo['airportFromID.name'];
+  if (item !== undefined && item.departure.length !== 0 && item.arrival.length !== 0) {
+    if (flightID.flightId === 'departure') {
+      thisBoard = item.departure.find(elem => elem.ID === Number(flightID.seatsId));
+      if (thisBoard === undefined) {
+        return <NoFlights />;
+      }
+      city = thisBoard['airportToID.name'];
+    } else if (flightID.flightId === 'arrival') {
+      thisBoard = item.arrival.find(elem => elem.ID === Number(flightID.seatsId));
+      city = flightInfo['airportFromID.name'];
+    }
+
+    if (thisBoard['carrierID.IATA'] === undefined) {
+      flightNum = `${thisBoard['carrierID.code']}${thisBoard.fltNo}`;
+    } else {
+      flightNum = `${thisBoard['carrierID.IATA']}${thisBoard.fltNo}`;
+    }
   }
 
-  console.log(thisBoard);
-  if (thisBoard['carrierID.IATA'] === undefined) {
-    flightNum = `${thisBoard['carrierID.code']}${thisBoard.fltNo}`;
-  } else {
-    flightNum = `${thisBoard['carrierID.IATA']}${thisBoard.fltNo}`;
-  }
+  const handleClick = seats => {
+    setSeats(seatsChosen.push[seats]);
+  };
 
-  const newSector = [1, 2, 3];
-  const newRow = [7, 6, 5, 4, 3, 2, 1];
-  const newSeatLeft = ['A', 'B', 'C'];
-  const newSeatRight = ['D', 'E', 'F'];
+  useEffect(() => {
+    setSearchParams({ date: day });
+  }, []);
 
   return (
     <>
       <h3 className="plane-text">{`Місто подорожі : ${city}.  /n Рейс № ${flightNum} `}</h3>
-      <div className="plane-container">
-        <div className="plane-container-full">
-          <div className="window1"></div>
-          <div className="window2"></div>
-          <div className="window3"></div>
-          <div className="window4"></div>
-          <div className="plane-board">
-            <div className="plane-board-cont">
-              {newSector.map(() => (
-                <div className="sector">
-                  {newRow.map(() => (
-                    <div className="sector-row">
-                      {newSeatLeft.map(seat => (
-                        <div className="sector-row-seat">{seat}</div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="plane-board-cont">
-              {newSector.map(() => (
-                <div className="sector">
-                  {newRow.map(() => (
-                    <div className="sector-row">
-                      {newSeatRight.map(el => (
-                        <div className="sector-row-seat">{el}</div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="plane-cabin"></div>
-          <div className="plane-board-wing-back"></div>
-          <div className="plane-board-wing-left"></div>
-          <div className="plane-board-wing-right"></div>
-          <div className="plane-board-wing-left-back"></div>
-          <div className="plane-board-wing-right-back"></div>
-          <div className="turbina-left"></div>
-          <div className="turbina-right"></div>
-        </div>
-      </div>
+      <PlaneContainer onClick={handleClick} />
     </>
   );
 };
 
-export default TakeYourPlace;
+const mapState = state => {
+  return {
+    day: dateSelector(state),
+  };
+};
+
+export default connect(mapState)(TakeYourPlace);

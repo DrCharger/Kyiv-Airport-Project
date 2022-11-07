@@ -27,6 +27,8 @@ const ArrivalDeparture = ({ fetcher, list, date }) => {
     fetcher(dayToFind);
   }, [date]);
 
+  console.log(list);
+
   return (
     <div className="search-result">
       <div>
@@ -83,7 +85,7 @@ const ArrivalDeparture = ({ fetcher, list, date }) => {
           element={<ThisDayFlight allFlightList={list.body} day={dayToFind} />}
         />
         <Route path="/" element={<div className="start__page">Виберіть відліт чи приліт</div>} />
-        <Route path="/:flightId/:seatsId" element={<TakeYourPlace item={list.body} />} />
+        <Route path={`/:flightId/:seatsId`} element={<TakeYourPlace item={list.body} />} />
       </Routes>
     </div>
   );
