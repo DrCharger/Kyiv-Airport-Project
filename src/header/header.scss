@@ -36,6 +36,9 @@
   }
   &_img {
     max-width: 150px;
+    &-pass {
+      max-width: 75px;
+    }
     @include small {
       max-width: 80px;
     }

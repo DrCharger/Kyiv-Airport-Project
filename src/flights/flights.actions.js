@@ -4,6 +4,7 @@ export const FLIGHTS_LIST_RECIEVED = 'FLIGHTS_LIST_RECIEVED';
 export const SHOW_SPINNER = 'SHOW_SPINNER';
 export const FIND_A_DATE = 'FIND_A_DATE';
 export const FLIGHT_ID = 'FLIGHT_ID';
+export const FLIGHT_PRICE = 'FLIGHT_PRICE';
 
 export const showSpinner = () => {
   return {
@@ -42,6 +43,15 @@ export const getFlightID = id => {
     type: FLIGHT_ID,
     payload: {
       id,
+    },
+  };
+};
+
+export const getFlightPrice = data => {
+  return {
+    type: FLIGHT_PRICE,
+    payload: {
+      data,
     },
   };
 };

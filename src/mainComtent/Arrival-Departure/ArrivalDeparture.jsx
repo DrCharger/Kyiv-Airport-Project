@@ -27,8 +27,6 @@ const ArrivalDeparture = ({ fetcher, list, date }) => {
     fetcher(dayToFind);
   }, [date]);
 
-  console.log(list);
-
   return (
     <div className="search-result">
       <div>

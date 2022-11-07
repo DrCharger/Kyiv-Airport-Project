@@ -1,0 +1,27 @@
+@import '../../index.scss';
+
+.buying-bin {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 85%;
+  padding-top: 25px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  @include small {
+    height: 350px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+  }
+}

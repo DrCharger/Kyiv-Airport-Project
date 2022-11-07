@@ -1,10 +1,17 @@
+import classNames from 'classnames';
 import React from 'react';
+import { useState } from 'react';
 
-const PlaneContainer = ({ onClick }) => {
+const PlaneContainer = ({ onClick, seatsChosen }) => {
   const newSector = [2, 1, 0];
   const newRow = [7, 6, 5, 4, 3, 2, 1];
   const newSeatLeft = ['A', 'B', 'C'];
   const newSeatRight = ['D', 'E', 'F'];
+
+  const handleChange = seat => {
+    onClick(seat);
+  };
+
   return (
     <div className="plane-container">
       <div className="plane-container-full">
@@ -21,8 +28,10 @@ const PlaneContainer = ({ onClick }) => {
                     {newSeatLeft.map(seat => (
                       <div
                         key={`seat-${seat}`}
-                        className="sector-row-seat"
-                        onClick={() => onClick(sector * newRow.length + row + seat)}
+                        className={classNames('sector-row-seat', {
+                          disabled: seatsChosen.includes(`${sector * newRow.length + row} ${seat}`),
+                        })}
+                        onClick={() => handleChange(`${sector * newRow.length + row} ${seat}`)}
                       >
                         {sector * newRow.length + row + seat}
                       </div>
@@ -40,8 +49,10 @@ const PlaneContainer = ({ onClick }) => {
                     {newSeatRight.map(seat => (
                       <div
                         key={`seat-${seat}`}
-                        className="sector-row-seat"
-                        onClick={() => onClick(sector * newRow.length + row + seat)}
+                        className={classNames('sector-row-seat', {
+                          disabled: seatsChosen.includes(`${sector * newRow.length + row} ${seat}`),
+                        })}
+                        onClick={() => handleChange(`${sector * newRow.length + row} ${seat}`)}
                       >
                         {sector * newRow.length + row + seat}
                       </div>
